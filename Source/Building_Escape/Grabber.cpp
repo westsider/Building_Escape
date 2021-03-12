@@ -31,7 +31,7 @@ void UGrabber::BeginPlay()
 void UGrabber::FindPhisicsHandle()
 {
 	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	if (PhysicsHandle)
+	if (PhysicsHandle == nullptr)
 	{
 		// phisics is found
 	} 
@@ -58,10 +58,8 @@ void UGrabber::SetUpInputComponent()
 }
 
 void UGrabber::Grab()
-{
-	UE_LOG(LogTemp, Warning, TEXT("Grabber Pressed!"));
-
-	FHitResult HitResult =  GetFirstPhisicsBodyInReach();
+{ 
+	
 
 	FVector PlayerViewPointLocation;
 	FRotator PlayerViewPointRotation;
@@ -69,7 +67,7 @@ void UGrabber::Grab()
 		PlayerViewPointLocation, 
 		PlayerViewPointRotation);
 	FVector LineTraceEnd = PlayerViewPointLocation + PlayerViewPointRotation.Vector() * Reach;
-
+	FHitResult HitResult = GetFirstPhisicsBodyInReach();
 	UPrimitiveComponent* ComponentToGrab = HitResult.GetComponent();
 
 	if (HitResult.GetActor())
