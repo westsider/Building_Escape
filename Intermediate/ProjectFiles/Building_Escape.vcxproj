@@ -287,6 +287,8 @@
     <None Include="..\..\Building_Escape.uproject"/>
     <None Include="..\..\Source\Building_Escape.Target.cs"/>
     <None Include="..\..\Source\Building_EscapeEditor.Target.cs"/>
+    <None Include="..\..\.gitattributes"/>
+    <None Include="..\..\.gitignore"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>
     <None Include="..\..\Config\DefaultEngine.ini"/>
     <None Include="..\..\Config\DefaultGame.ini"/>

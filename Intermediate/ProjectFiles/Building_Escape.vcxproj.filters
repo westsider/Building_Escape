@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Building_Escape.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{ED0B61FB-FFE6-4D38-BF36-1BD92826A45D}</UniqueIdentifier>
+      <UniqueIdentifier>{2EBD0D5B-CBE4-4564-AF1C-8A360C8B9433}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Building_Escape.Target.cs">
       <Filter>Source</Filter>
@@ -11,8 +11,10 @@
     <None Include="..\..\Source\Building_EscapeEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{089BBC6A-B845-407B-AE69-45CCC0AC81F5}</UniqueIdentifier>
+      <UniqueIdentifier>{09C6B433-C1A4-41FA-9AFF-E6B1F908C9D6}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -27,7 +29,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\Building_Escape">
-      <UniqueIdentifier>{63154284-8A9B-4E34-AD32-AE1E25D153BA}</UniqueIdentifier>
+      <UniqueIdentifier>{A7930917-C192-44A7-A7A6-E51B8FFD5401}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Building_Escape\Building_Escape.Build.cs">
       <Filter>Source\Building_Escape</Filter>
