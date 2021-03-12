@@ -3,6 +3,7 @@
 
 
 #include "OpenDoor.h"
+#include "Components/PrimitiveComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/Actor.h"
@@ -41,7 +42,7 @@ void UOpenDoor::BeginPlay()
 void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	if (PreassurePlate && PreassurePlate->IsOverlappingActor(ActorThatOpens))
+	if (TotalMassOfActors() > MassToOpenDoor)
 	{
 		FString Name = GetOwner()->GetName();
 		UE_LOG(LogTemp, Warning, TEXT("Player Detected: %s"), *Name);
@@ -53,7 +54,6 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	{
 		CloseDoor(DeltaTime);
 	}
-	
 }
 
 void UOpenDoor::OpenDoor(float DeltaTime)
@@ -70,4 +70,17 @@ void UOpenDoor::CloseDoor(float DeltaTime)
 	FRotator DoorRotation = GetOwner()->GetActorRotation();
 	DoorRotation.Yaw = CurrentYaw;
 	GetOwner()->SetActorRotation(DoorRotation);
+}
+
+float UOpenDoor::TotalMassOfActors() const
+{
+	float TotalMass = 0.f;
+	TArray<AActor*> OverlappingActors;
+	PreassurePlate->GetOverlappingActors(OverlappingActors);
+	//UE_LOG(LogTemp, Warning, TEXT("PreassurePlate: %s"), *PreassurePlate.ToString());
+	for (AActor* Actor : OverlappingActors)
+	{
+		TotalMass += Actor->FindComponentByClass<UPrimitiveComponent>()->GetMass();
+	}
+	return TotalMass;
 }
