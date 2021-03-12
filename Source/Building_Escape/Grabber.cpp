@@ -60,6 +60,7 @@ void UGrabber::Grab()
 
 	if (HitResult.GetActor())
 	{
+		if (!PhysicsHandle) { return;}
 		PhysicsHandle->GrabComponentAtLocation(
 			ComponentToGrab,
 			NAME_None,
@@ -79,6 +80,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	if (!PhysicsHandle) { return; }
 	if (PhysicsHandle->GrabbedComponent)
 	{
 		PhysicsHandle->SetTargetLocation(GetPlayersReach());
@@ -87,19 +89,6 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 
 FHitResult UGrabber::GetFirstPhisicsBodyInReach() const
 {
-	//FVector LineTraceEnd = GetPlayersWorldPos();
-
-	//DrawDebugLine(
-	//	GetWorld(),
-	//	PlayerViewPointLocation,
-	//	LineTraceEnd,
-	//	FColor(0, 255, 0),
-	//	false,
-	//	0.f,
-	//	0,
-	//	5.f
-	//);
-
 	// ray-cast (reach)
 	FHitResult  Hit;
 	FCollisionQueryParams TraceParams(FName(TEXT("")), false, GetOwner());
